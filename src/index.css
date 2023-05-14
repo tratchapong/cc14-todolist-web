@@ -8,3 +8,11 @@ html {
   font-family: 'Anuphan', sans-serif;
 }
 
+.navlink {
+  @apply block p-1
+}
+
+.navlink.active {
+  @apply border shadow bg-red-300
+}
+
