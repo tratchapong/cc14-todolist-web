@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import {createContext, useState, useContext, useEffect} from 'react'
+import {createContext, useState, useEffect} from 'react'
 import {getMe} from '../api/todoApi'
 
 const AuthContext = createContext()
@@ -28,8 +28,5 @@ function AuthContextProvider({children}) {
   )
 }
 
-export const useAuth = () => {
-  return useContext(AuthContext)
-}
-
+export { AuthContext }
 export default AuthContextProvider

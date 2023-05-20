@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import {login, getMe} from '../api/todoApi'
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth  from "../hooks/useAuth";
 
 function Login() {
   const navigate = useNavigate()

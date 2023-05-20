@@ -1,10 +1,11 @@
 import {RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom'
-import {useAuth} from '../contexts/AuthContext'
+import useAuth from "../hooks/useAuth";
 // import NotFound from '../pages/NotFound'
 import Header from '../pages/Header'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import GuestHome from '../pages/GuestHome';
 
 
 export default function Router() {
@@ -21,7 +22,7 @@ export default function Router() {
       children : [
         {
           index: true,
-          element: <Home />
+          element: !user ? <GuestHome /> : <Home />
         },
         {
           path: "login",
