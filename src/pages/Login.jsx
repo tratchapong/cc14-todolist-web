@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {useState} from 'react'
-import axios from 'axios'
+import {login, getMe} from '../api/todoApi'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -17,21 +17,14 @@ function Login() {
 
   const hdlSubmit = e => {
     e.preventDefault()
-
-    axios.post('http://localhost:8080/auth/login', input)
+    login(input)
     .then( rs => {
-      console.log(rs.data)
       localStorage.setItem('token', rs.data.token)
-      return axios.get('http://localhost:8080/auth/getMe', {
-        headers: {
-          Authorization: `Bearer ${rs.data.token}`,
-        },
-      })
+      return getMe(rs.data.token)
     }).then( rs => {
-      console.log(rs.data)
       setUser(rs.data)
       navigate('/')
-    })
+    }).catch( err => console.log(err))
   }
 
   return (

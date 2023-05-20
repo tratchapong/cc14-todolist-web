@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import axios from 'axios'
+import {register} from '../api/todoApi'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
@@ -17,7 +17,7 @@ export default function Register() {
     e.preventDefault()
     if(input.password !== input.confirmPassword)
       return alert('Please check Password & Confirm Password')
-    axios.post('http://localhost:8080/auth/register', input)
+    register(input)
     .then( rs => {
       console.log(rs.data)
       navigate('/login')

@@ -1,11 +1,15 @@
-import {RouterProvider, createBrowserRouter, Outlet} from 'react-router-dom'
-import NotFound from '../pages/NotFound'
+import {RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom'
+import {useAuth} from '../contexts/AuthContext'
+// import NotFound from '../pages/NotFound'
 import Header from '../pages/Header'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 
+
 export default function Router() {
+  const {user} = useAuth()
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -13,7 +17,7 @@ export default function Router() {
         <Header />
         <Outlet />
       </>,
-      errorElement: <NotFound />,
+      errorElement: <Navigate to="/" />,
       children : [
         {
           index: true,
@@ -21,11 +25,11 @@ export default function Router() {
         },
         {
           path: "login",
-          element: <Login />,
+          element: !user ? <Login /> : <Navigate to="/" />,
         },
         {
           path: "register",
-          element: <Register />,
+          element: !user ? <Register /> : <Navigate to="/" />,
         },
       ]
     },

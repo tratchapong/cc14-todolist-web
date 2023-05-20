@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {createContext, useState, useContext, useEffect} from 'react'
-import axios from 'axios'
+import {getMe} from '../api/todoApi'
 
 const AuthContext = createContext()
 
@@ -10,18 +10,19 @@ function AuthContextProvider({children}) {
   useEffect( ()=> {
     let token = localStorage.getItem('token')
     if(token) {
-      axios.get('http://localhost:8080/auth/getMe', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then( rs => {
-        setUser(rs.data)
-      })
-    
+      getMe(token).then( rs => {
+          setUser(rs.data)
+        })
     }
   },[])
+
+  const logout = () => {
+    setUser(null)
+    localStorage.removeItem('token')
+  }
+
   return (
-    <AuthContext.Provider value={{user, setUser}}>
+    <AuthContext.Provider value={{user, setUser, logout}}>
       {children}
     </AuthContext.Provider>
   )
