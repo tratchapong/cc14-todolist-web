@@ -21,8 +21,16 @@ function Login() {
     axios.post('http://localhost:8080/auth/login', input)
     .then( rs => {
       console.log(rs.data)
+      return axios.get('http://localhost:8080/auth/getMe', {
+        headers: {
+          Authorization: `Bearer ${rs.data.token}`,
+        },
+      })
+    }).then( rs => {
+      console.log(rs.data)
+      setUser(rs.data)
       navigate('/')
-    }).catch(err => console.log(err.response.data))
+    })
   }
 
   return (
