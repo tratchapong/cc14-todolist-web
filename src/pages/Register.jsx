@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+
 export default function Register() {
   const navigate = useNavigate()
   const [input, setInput] = useState({
@@ -18,9 +19,9 @@ export default function Register() {
       return alert('Please check Password & Confirm Password')
     axios.post('http://localhost:8080/auth/register', input)
     .then( rs => {
-      console.log(rs)
+      console.log(rs.data)
       navigate('/login')
-    })
+    }).catch(err => console.log(err.response.data))
   }
 
   return (
