@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/73816951/how-to-provide-dynamic-custom-props-to-react-router-6-4-route
+// we can use createBrowserRouter inside the function Component
+
 import {RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom'
 import useAuth from "../hooks/useAuth";
 // import NotFound from '../pages/NotFound'

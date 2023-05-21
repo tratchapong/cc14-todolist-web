@@ -12,13 +12,17 @@ const addToken = (token) => ({
 })
 
 export const register = (input) => {
-  return axios.post('http://localhost:8080/auth/register', input)
+  return todoApi.post('/auth/register', input)
 }
 
 export const login = (input) => {
-  return axios.post('http://localhost:8080/auth/login', input)
+  return todoApi.post('/auth/login', input)
 }
 
 export const getMe = (token) => {
-    return axios.get('http://localhost:8080/auth/getMe', addToken(token))
+    return todoApi.get('/auth/getMe', addToken(token))
+}
+
+export const getJobs = (token) => {
+    return todoApi.get('/todos', addToken(token))
 }
