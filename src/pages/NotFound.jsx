@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 
@@ -6,7 +7,8 @@ export default function NotFound() {
 
   useEffect( ()=>{
     setTimeout(()=>{
-      navigate('/')
+      // navigate('/')
+      window.location.replace('/')
     },2000)
   }, [])
   

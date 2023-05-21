@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import useAuth  from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -35,6 +35,9 @@ export default function Header() {
         )}
         {user && (
           <>
+            <NavLink className="navlink" to="/addtodo">
+              Add Job
+            </NavLink>
             <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">
               Logout
             </NavLink>
