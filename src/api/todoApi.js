@@ -42,3 +42,7 @@ export const getJob = (id, token) => {
 export const updateTodo = (id, input, token) => {
   return todoApi.put(`/todos/${id}`, input, addToken(token))
 }
+
+export const deleteTodo = (id, token) => {
+  return todoApi.delete(`/todos/${id}`, addToken(token))
+}

@@ -6,6 +6,7 @@ import {getJobs, getSummary} from '../api/todoApi'
 function Home() {
   const [jobs, setJobs] = useState([])
   const [summary, setSummary] = useState({})
+  const [reload, setReload] = useState(false)
 
   useEffect( ()=>{
     let token = localStorage.getItem('token')
@@ -16,7 +17,7 @@ function Home() {
     getSummary(token).then(rs=> {
       setSummary(rs.data)
     })
-  }, [])
+  }, [reload])
 
   return (
     <>
@@ -26,9 +27,14 @@ function Home() {
         <SummaryCard title="Completed" amount={summary.done} />
       </div>
       <div className="flex flex-col items-center w-2/3 mx-auto">
-      { jobs.map(el => (
-          <JobItem key={el.id} job={el} />
+      { 
+        jobs.length > 0 
+        ?
+        jobs.map(el => (
+          <JobItem key={el.id} job={el} setReload={setReload} />
         ))
+        :
+        <p>No Jobs</p>
       }
         
       </div>

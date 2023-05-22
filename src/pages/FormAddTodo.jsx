@@ -19,7 +19,6 @@ export default function FormAddTodo() {
   const hdlSubmit = e => {
     e.preventDefault()
     let token = localStorage.getItem('token')
-    console.log(token)
     addTodo(input, token).then(rs => {
       // console.log(rs)
       navigate('/')
