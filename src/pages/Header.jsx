@@ -39,7 +39,7 @@ export default function Header() {
               Add Job
             </NavLink>
             {/* <NavLink className="navlink" style={{display: 'none'}} to="/updatetodo"> */}
-            <NavLink className="navlink" to="/updatetodo">
+            <NavLink className="navlink notshow" to="/updatetodo">
               Update Job
             </NavLink>
             <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">

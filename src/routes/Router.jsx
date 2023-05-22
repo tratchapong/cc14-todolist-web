@@ -46,12 +46,11 @@ export default function Router() {
           element: user ? <FormAddTodo /> : <Navigate to='/' />
         },
         {
-          path: "updatetodo",
+          path: "updatetodo/:id",
           element: user ? <FormUpdateTodo /> : <Navigate to='/' />
         },
       ]}
-    ]
-      
+    ] 
   );
 
   return <RouterProvider router={router} />;

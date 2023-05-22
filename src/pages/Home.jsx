@@ -10,7 +10,7 @@ function Home() {
   useEffect( ()=>{
     let token = localStorage.getItem('token')
     getJobs(token).then(rs => {
-      console.log(rs.data)
+      // console.log(rs.data)
       setJobs(rs.data)
     })
     getSummary(token).then(rs=> {

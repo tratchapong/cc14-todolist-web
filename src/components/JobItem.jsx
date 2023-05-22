@@ -13,7 +13,7 @@ export default function JobItem(props) {
           <p>Remain Day : {job.remainDay}</p>
           <p>Due Date : {job.dueDate}</p>
           <p>Status : {job.status? 'Done' : 'Undone'}</p>
-          <Link className='btn btn-circle' to={`/editTodo/${job.id}`}>Edit</Link>
+          <Link className='btn btn-circle' to={`/updatetodo/${job.id}`}>Edit</Link>
         </div>
       </div>
     </div>

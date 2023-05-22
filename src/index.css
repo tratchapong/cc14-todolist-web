@@ -16,3 +16,6 @@ html {
   @apply border shadow bg-red-300
 }
 
+.navlink.notshow {
+  @apply hidden;
+}

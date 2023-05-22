@@ -1,16 +1,27 @@
 /* eslint-disable no-unused-vars */
-import {useState} from 'react'
-import {updateTodo} from '../api/todoApi'
-import { useNavigate } from 'react-router-dom';
+import {useState, useEffect} from 'react'
+import {getJob, updateTodo} from '../api/todoApi'
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 
 export default function FormUpdateTodo() {
   const navigate = useNavigate()
+  const {id} = useParams()
+  // console.log(p)
   const [input, setInput] = useState({
     title: '',
     dueDate: '',
     status: ''
   })
+
+  useEffect( ()=>{
+    console.log(id)
+    let token = localStorage.getItem('token')
+    getJob(id, token).then( rs=> {
+      console.log(rs.data)
+      setInput(rs.data)
+    })
+  },[id])
 
   const hdlChangeInput = (e) => {
     setInput({...input, [e.target.name] : e.target.value })
@@ -20,7 +31,7 @@ export default function FormUpdateTodo() {
     e.preventDefault()
     let token = localStorage.getItem('token')
     console.log(token)
-    updateTodo(input, token).then(rs => {
+    updateTodo(id, input, token).then(rs => {
       // console.log(rs)
       navigate('/')
     })
@@ -60,6 +71,7 @@ export default function FormUpdateTodo() {
           Update this job
         </button>
       </form>
+      <Link to='/' className="block text-right">Cancel</Link>
     </div>
   )
 }
