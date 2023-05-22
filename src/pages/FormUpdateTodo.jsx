@@ -1,42 +1,44 @@
 /* eslint-disable no-unused-vars */
-import {useState, useEffect} from 'react'
-import {getJob, updateTodo} from '../api/todoApi'
-import { useNavigate, useParams, Link } from 'react-router-dom';
-
+import { useState, useEffect } from "react";
+import { getJob, updateTodo } from "../api/todoApi";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 export default function FormUpdateTodo() {
-  const navigate = useNavigate()
-  const {id} = useParams()
+  const navigate = useNavigate();
+  const { id } = useParams();
   // console.log(p)
   const [input, setInput] = useState({
-    title: '',
-    dueDate: '',
-    status: ''
-  })
+    title: "",
+    dueDate: "",
+    status: "",
+  });
 
-  useEffect( ()=>{
-    console.log(id)
-    let token = localStorage.getItem('token')
-    getJob(id, token).then( rs=> {
-      console.log(rs.data)
-      setInput(rs.data)
-    })
-  },[id])
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    getJob(id, token).then((rs) => {
+      // console.log(rs.data);
+      setInput(rs.data);
+    });
+  }, [id]);
 
   const hdlChangeInput = (e) => {
-    setInput({...input, [e.target.name] : e.target.value })
+    setInput({ ...input, [e.target.name]: e.target.value });
+    
+  };
+
+  const hdlCheck = e => {
+    setInput({...input, status: e.target.checked})
+    
   }
 
-  const hdlSubmit = e => {
-    e.preventDefault()
-    let token = localStorage.getItem('token')
-    console.log(token)
-    updateTodo(id, input, token).then(rs => {
+  const hdlSubmit = (e) => {
+    e.preventDefault();
+    let token = localStorage.getItem("token");
+    updateTodo(id, input, token).then((rs) => {
       // console.log(rs)
-      navigate('/')
-    })
-  } 
-
+      navigate("/");
+    });
+  };
 
   return (
     <div className="w-full max-w-[800px] mx-auto my-6 p-5 border">
@@ -64,6 +66,12 @@ export default function FormUpdateTodo() {
             onChange={hdlChangeInput}
           />
         </div>
+        <div className="form-control w-40 mx-auto ">
+          <label className="cursor-pointer label">
+            <span className="label-text">Completed :</span>
+            <input type="checkbox" className="toggle toggle-primary" checked={input.status} onChange={hdlCheck}/>
+          </label>
+        </div>
         <button
           type="submit"
           className="block mx-auto bg-blue-500 text-white cursor-pointer w-2/3 opacity-90 px-5 py-4 my-5 border-none hover:opacity-100"
@@ -71,7 +79,9 @@ export default function FormUpdateTodo() {
           Update this job
         </button>
       </form>
-      <Link to='/' className="block text-right">Cancel</Link>
+      <Link to="/" className="block text-right">
+        Cancel
+      </Link>
     </div>
-  )
+  );
 }
