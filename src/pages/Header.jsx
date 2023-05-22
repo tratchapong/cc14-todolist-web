@@ -38,6 +38,10 @@ export default function Header() {
             <NavLink className="navlink" to="/addtodo">
               Add Job
             </NavLink>
+            {/* <NavLink className="navlink" style={{display: 'none'}} to="/updatetodo"> */}
+            <NavLink className="navlink" to="/updatetodo">
+              Update Job
+            </NavLink>
             <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">
               Logout
             </NavLink>

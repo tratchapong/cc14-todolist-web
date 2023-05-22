@@ -11,6 +11,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import GuestHome from "../pages/GuestHome";
 import FormAddTodo from "../pages/FormAddTodo";
+import FormUpdateTodo from "../pages/FormUpdateTodo";
 
 export default function Router() {
   const { user } = useAuth();
@@ -43,6 +44,10 @@ export default function Router() {
         {
           path: "addtodo",
           element: user ? <FormAddTodo /> : <Navigate to='/' />
+        },
+        {
+          path: "updatetodo",
+          element: user ? <FormUpdateTodo /> : <Navigate to='/' />
         },
       ]}
     ]

@@ -34,3 +34,7 @@ export const getSummary = (token) => {
 export const addTodo = (input, token) => {
   return todoApi.post('/todos',input, addToken(token))
 }
+
+export const updateTodo = (input, token) => {
+  return todoApi.put('/todos', input, addToken(token))
+}
