@@ -21,7 +21,7 @@ export default function Register() {
     .then( rs => {
       console.log(rs.data)
       navigate('/login')
-    }).catch(err => console.log(err.response.data))
+    }).catch(err => console.log(err.response?.data || err.message))
   }
 
   return (
