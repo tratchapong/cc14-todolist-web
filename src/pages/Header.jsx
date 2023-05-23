@@ -1,15 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import Navbar from '../components/Navbar'
 import useAuth from "../hooks/useAuth";
 
 export default function Header() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
-  const hdlLogout = (e) => {
-    e.preventDefault();
-    logout();
-    navigate("/");
-  };
   return (
     <div className="flex justify-between items-end w-full p-2 bg-lime-400 h-[80px]">
       <div className="flex-1 flex gap-3 items-center">
@@ -18,36 +14,8 @@ export default function Header() {
         </div>
         <p className="text-2xl">{user?.name || "Guest"}</p>
       </div>
+      <Navbar />
 
-      <nav className="flex gap-4">
-        <NavLink className="navlink" to="/">
-          Home
-        </NavLink>
-        {!user && (
-          <>
-            <NavLink className="navlink" to="/login">
-              Login
-            </NavLink>
-            <NavLink className="navlink" to="/register">
-              Register
-            </NavLink>
-          </>
-        )}
-        {user && (
-          <>
-            <NavLink className="navlink" to="/addtodo">
-              Add Job
-            </NavLink>
-            {/* <NavLink className="navlink" style={{display: 'none'}} to="/updatetodo"> */}
-            <NavLink className="navlink notshow" to="/updatetodo">
-              Update Job
-            </NavLink>
-            <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">
-              Logout
-            </NavLink>
-          </>
-        )}
-      </nav>
     </div>
   );
 }
