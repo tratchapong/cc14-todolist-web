@@ -2,7 +2,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
-    const { logout } = useAuth();
+    const navigate = useNavigate()
+    const { user, logout } = useAuth();
 
     const hdlLogout = (e) => {
       e.preventDefault();
