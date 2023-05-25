@@ -12,6 +12,7 @@ import Register from "../pages/Register";
 import GuestHome from "../pages/GuestHome";
 import FormAddTodo from "../pages/FormAddTodo";
 import FormUpdateTodo from "../pages/FormUpdateTodo";
+import EditProfile from "../pages/EditProfile";
 
 export default function Router() {
   const { user } = useAuth();
@@ -48,6 +49,10 @@ export default function Router() {
         {
           path: "updatetodo/:id",
           element: user ? <FormUpdateTodo /> : <Navigate to='/' />
+        },
+        {
+          path: "editprofile",
+          element: user ? <EditProfile /> : <Navigate to='/' />
         },
       ]}
     ] 

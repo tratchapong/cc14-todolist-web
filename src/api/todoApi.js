@@ -46,3 +46,7 @@ export const updateTodo = (id, input, token) => {
 export const deleteTodo = (id, token) => {
   return todoApi.delete(`/todos/${id}`, addToken(token))
 }
+
+export const updateProfile = (input, token) => {
+  return todoApi.put('/user', input, addToken(token))
+}

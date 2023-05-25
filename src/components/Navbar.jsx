@@ -31,12 +31,15 @@ export default function Navbar() {
                     <NavLink className="navlink" to="/addtodo">
                         Add Job
                     </NavLink>
-                    {/* <NavLink className="navlink" style={{display: 'none'}} to="/updatetodo"> */}
-                    <NavLink className="navlink notshow" to="/updatetodo">
-                        Update Job
+                    <NavLink className="navlink" to="/editprofile">
+                        Profile
                     </NavLink>
+
                     <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">
                         Logout
+                    </NavLink>
+                    <NavLink className="navlink notshow" to="/updatetodo">
+                        **No Show**
                     </NavLink>
                 </>
             )}
