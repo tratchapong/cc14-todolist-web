@@ -38,9 +38,9 @@ export default function Navbar() {
                     <NavLink className="navlink" onClick={(e) => hdlLogout(e)} to="/logout">
                         Logout
                     </NavLink>
-                    <NavLink className="navlink notshow" to="/updatetodo">
+                    {/* <NavLink className="navlink notshow" to="/updatetodo">
                         **No Show**
-                    </NavLink>
+                    </NavLink> */}
                 </>
             )}
         </nav>

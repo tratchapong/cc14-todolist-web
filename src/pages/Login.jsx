@@ -16,7 +16,7 @@ function Login() {
     resolver: joiResolver(LoginSchema)
   })
   const navigate = useNavigate()
-  const {user, setUser} = useAuth()
+  const {setUser} = useAuth()
 
   const onSubmit = formData => {
     login(formData)
