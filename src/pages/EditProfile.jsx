@@ -27,7 +27,8 @@ export default function EditProfile() {
     })
 
   };
-  const img_url = user?.image ? `http://localhost:8080/pic/${user?.image}?${new Date().getTime()}` : anyuser;
+  // const img_url = user?.image ? `http://localhost:8080/pic/${user?.image}?${new Date().getTime()}` : anyuser;
+  const img_url = user?.image ? user.image : anyuser;
 
   return (
     <div className="w-full max-w-[800px] mx-auto my-6 p-5 border">

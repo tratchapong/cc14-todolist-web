@@ -6,7 +6,8 @@ import useAuth from "../hooks/useAuth";
 export default function UserMenu() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const img_url = `http://localhost:8080/pic/${user?.image}?${new Date().getTime()}`;
+  // const img_url = `http://localhost:8080/pic/${user?.image}?${new Date().getTime()}`;
+  const img_url = user?.image;
 
   const menuClick = (e) => {
     // console.log(e.target)
