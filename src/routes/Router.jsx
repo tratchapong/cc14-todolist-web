@@ -16,7 +16,7 @@ import EditProfile from "../pages/EditProfile";
 
 export default function Router() {
   const { user } = useAuth();
-  // console.log('Router...', user)
+  console.log('Router...', user)
 
 
   const router = createBrowserRouter([
