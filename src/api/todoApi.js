@@ -2,7 +2,8 @@
 import axios from 'axios'
 
 const todoApi = axios.create({
-  baseURL : 'http://139.5.146.109:8080',
+  baseURL : 'https://dev.rt-lab.co/services',
+  // baseURL : 'http://139.5.146.109:8080',
   // baseURL : 'http://localhost:8080',
 })
 
