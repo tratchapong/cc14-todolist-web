@@ -18,34 +18,29 @@ export default function Router() {
   const { user } = useAuth();
   console.log('Router...', user)
 
-  const userChild = [
-    { index : true, element : <Home/> },
-    { path : 'addtodo', element: <FormAddTodo />},
-    { path : 'updatetodo/:id', element: <FormUpdateTodo />},
-    { path : 'editprofile', element: <EditProfile />}
-  ]
-
-  const guestChild = [
-    { index : true, element: <GuestHome />},
-    { path : 'login', element : <Login />},
-    { path : 'register', element: <Register />},
-  ]
-
-  const sel_children = user ? userChild : guestChild
-  const router = createBrowserRouter([
+  const router_v1 = createBrowserRouter([
     {
-      path: "/",
-      element: (
+      path : '/',
+      element : (
         <>
-          <Header />
-          <Outlet />
+        <Header />
+        <Outlet />
         </>
       ),
       errorElement: <NotFound />,
-      children : sel_children 
-    }
-    ] 
-  );
+      children : user ? [
+        { index : true, element : <Home/> },
+        { path : 'addtodo', element: <FormAddTodo />},
+        { path : 'updatetodo/:id', element: <FormUpdateTodo />},
+        { path : 'editprofile', element: <EditProfile />}
+      ] : [
+        { index : true, element: <GuestHome />},
+        { path : 'login', element : <Login />},
+        { path : 'register', element: <Register />},
 
-  return <RouterProvider router={router} />;
+      ]
+    }
+  ])
+
+  return <RouterProvider router={router_v1} />;
 }
